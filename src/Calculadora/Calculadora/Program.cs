@@ -48,5 +48,44 @@ public class Program
     public static string Process(string input)
     {
         // Vamos começar!
+
+        string resultado ="";
+
+        try
+        {
+
+            string[] r = input.Split(' ');
+
+            if (r.Length == 2)
+            {
+                int a = int.Parse(r[0]);
+                int b = int.Parse(r[1]);
+
+                resultado = MDC(a, b).ToString();
+
+            }
+            
+
+        }
+        catch (Exception exp)
+        {
+           resultado = "Exception: " + exp.Message;
+        }
+
+        return resultado;
+    }
+
+    public static int MDC(int a, int b)
+    {
+        int resto;
+
+        while (b != 0)
+        {
+            resto = a % b;
+            a = b;
+            b = resto;
+        }
+
+        return a;
     }
 }
